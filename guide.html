@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Guide - TourConnect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #0078d7;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 0.5rem 0 0.2rem;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #0078d7;
+            color: white;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TourConnect - Book a Guide</h1>
+    </header>
+    <main>
+        <h1>Find and Book Your Guide</h1>
+        <form id="bookingForm">
+            <label for="destination">Destination:</label>
+            <input type="text" id="destination" name="destination" placeholder="Enter your destination" required>
+
+            <label for="date">Date of Travel:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="guideType">Type of Guide:</label>
+            <select id="guideType" name="guideType" required>
+                <option value="">Select a guide type</option>
+                <option value="historical">Historical Guide</option>
+                <option value="adventure">Adventure Guide</option>
+                <option value="local">Local Experience Guide</option>
+            </select>
+
+            <label for="preferences">Additional Preferences:</label>
+            <textarea id="preferences" name="preferences" rows="4" placeholder="Any specific preferences or requirements"></textarea>
+
+            <button type="submit">Book Guide</button>
+        </form>
+        <p id="confirmationMessage" style="color: green; display: none;">Your guide has been successfully booked!</p>
+    </main>
+    <footer>
+        &copy; 2024 TourConnect. All rights reserved.
+    </footer>
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('confirmationMessage').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

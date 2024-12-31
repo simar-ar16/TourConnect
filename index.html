@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Connect</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-image"></div>
+
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <h2>Travel Tracker</h2>
+            </div>
+            <div class="navbar-right">
+                <ul>
+                    <li><a href="javascript:void(0);" onclick="scrollToSection('book-tickets')">Book Tickets</a></li>
+            <li><a href="javascript:void(0);" onclick="scrollToSection('book-hotels')">Book Hotels</a></li>
+            <li><a href="javascript:void(0);" onclick="scrollToSection('chatbot')">Chatbot</a></li>
+            <li><a href="javascript:void(0);" onclick="scrollToSection('recommendations')">What to Visit</a></li>
+                    <li>
+                        <!-- Dark Mode Toggle Button in Navbar -->
+                        <label class="toggle-label">
+                            <span>Dark Mode</span>
+                            <input type="checkbox" id="darkModeToggle" onclick="toggleTheme()">
+                            <span class="slider"></span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+         <!-- Hamburger Menu -->
+         <div class="hamburger-menu" onclick="toggleHamburgerMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="javascript:void(0);" onclick="scrollToSection('book-tickets')">Book Tickets</a></li>
+            <li><a href="javascript:void(0);" onclick="scrollToSection('book-hotels')">Book Hotels</a></li>
+            <li><a href="javascript:void(0);" onclick="scrollToSection('chatbot')">Chatbot</a></li>
+            <li><a href="javascript:void(0);" onclick="scrollToSection('recommendations')">What to Visit</a></li>
+            <li>
+                <label class="toggle-label">
+                    <span>Dark Mode</span>
+                    <input type="checkbox" id="darkModeToggle" onclick="toggleTheme()">
+                    <span class="slider"></span>
+                </label>
+            </li>
+        </ul>
+    </div>
+    </header>
+
+    <main>
+        <section id="intro">
+            <h1>Welcome to Travel Tracker</h1>
+            <p>Your go-to travel assistant for a memorable journey!</p>
+        </section>
+
+        <section id="book-tickets" class="feature">
+            <h2>Book Tickets</h2>
+            <p>Plan your travel by booking flights and trains at great prices!</p>
+            <br>
+            <button onclick="toggleTicketOptions()">Book Tickets</button>
+            <div id="ticket-options" class="hidden-options">
+                <a href="https://www.irctc.co.in/nget/train-search" target="_blank" rel="noopener noreferrer"><button> Train </button></a>
+                <a href="https://www.bus.irctc.co.in/home" target="_blank" rel="noopener noreferrer"><button> Bus </button></a>
+               <a href="https://www.air.irctc.co.in/" target="_blank" rel="noopener noreferrer"><button> Flight </button></a>
+            </div>
+        </section>
+
+        <section id="book-hotels" class="feature">
+            <h2>Book Hotels</h2>
+            <p>Find the best accommodations that fit your budget and comfort.</p>
+            <br>
+            <a href="https://www.oyorooms.com/" target="_blank" rel="noopener noreferrer"><button>Book Hotels</button></a>
+        </section>
+
+        <section id="chatbot" class="feature">
+            <h2>Chatbot</h2>
+            <p>Get a personalized budget plan for your trip to any destination!</p>
+            <br>
+            <a href="bot.html" target="_blank" rel="noopener noreferrer"><button>Chat with Bot</button></a>
+        </section>
+
+        <section id="recommendations" class="feature">
+            <h2>What to Visit</h2>
+            <p>Discover recommended places at your travel destination.</p>
+            <br>
+            <a href="places.html">
+            <button>Explore Places</button></a>
+        </section>
+
+        <section id="guide" class="feature">
+            <h2>Guide</h2>
+            <p>Get a Guide for help!</p>
+            <br>
+            <a href="guide.html" target="_blank" rel="noopener noreferrer"><button>Get Guide</button></a>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

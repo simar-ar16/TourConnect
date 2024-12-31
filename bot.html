@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Buddy Chatbot</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2193b0, #6dd5ed);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Chatbot Container */
+        .chat-container {
+            width: 90%;
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        /* Chat Header */
+        .chat-header {
+            background: linear-gradient(to right, #1d4350, #a43931);
+            padding: 15px;
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Chat Messages */
+        .chat-messages {
+            height: 300px;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+
+        .message {
+            margin: 10px 0;
+            display: flex;
+        }
+
+        .message.bot {
+            justify-content: flex-start;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message .text {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .message.bot .text {
+            background-color: #e4f1fe;
+            color: #333;
+        }
+
+        .message.user .text {
+            background-color: #1d4350;
+            color: white;
+        }
+
+        /* Input Area */
+        .input-area {
+            display: flex;
+            border-top: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .input-area input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .input-area button {
+            background: #1d4350;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-left: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .input-area button:hover {
+            background: #a43931;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            Travel Buddy Chatbot
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Ask me about travel..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Chat messages container
+        const chatMessages = document.getElementById('chatMessages');
+
+        // Predefined bot responses
+        const botResponses = {
+            "hello": "Hi there! How can I assist you with your travel plans?",
+            "hi": "Hi there! How can I assist you with your travel plans?",
+            "how are you":"I'm fine. Thank you for asking. How are you doing?",
+            "how are you?":"I'm fine. Thank you for asking. How are you doing?",
+            "book hotel":"You can visit out main site to book hotels!",
+            "mumbai":"sure!",
+            "book ticket": "Sure! I can help you book tickets. Where would you like to go?",
+            "recommend places": "I recommend visiting Paris for romance, Tokyo for culture, or Bali for beaches.",
+            "help": "I can assist with ticket bookings, hotel recommendations, and travel tips. What do you need help with?",
+            "lucknow":"Sure what do you want to do in Lucknow?",
+            "delhi":"Sure what do you want to do in Delhi?",
+            "mumbai":"Sure, where do you want to visit in Mumbai?",
+            "jaipur":"Sure what do you want to do in Jaipur?",
+            "varansi":"Sure what do you want to do in Varansi?",
+            "amristar":"Sure what do you want to do in Amritsar?",
+            "nainital":"Sure what do you want to do in Nainital?",
+            "surat":"Sure, where do you want to visit in Surat?",
+            "chennai":"Sure what do you want to do in Chennai?",
+            "bengaluru":"Sure, what do you want to do in Bengaluru?",
+            "guwahati":"Sure what do you want to do in Guwahati?",
+            "kolkata":"Sure what do you want to do in Kolkata?",
+            "puri":"Sure what do you want to do in Puri?"
+
+        };
+
+        // Add a message to the chat
+        function addMessage(text, sender) {
+            const message = document.createElement('div');
+            message.classList.add('message', sender);
+
+            const messageText = document.createElement('div');
+            messageText.classList.add('text');
+            messageText.textContent = text;
+
+            message.appendChild(messageText);
+            chatMessages.appendChild(message);
+
+            // Auto-scroll to the bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Send message function
+        function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const text = userInput.value.trim();
+
+            if (text === "") return;
+
+            // Add user's message
+            addMessage(text, 'user');
+            userInput.value = "";
+
+            // Simulate bot response
+            setTimeout(() => {
+                const botResponse = botResponses[text.toLowerCase()] || 
+                    "I'm not sure I understand. Can you rephrase?";
+                addMessage(botResponse, 'bot');
+            }, 500);
+        }
+    </script>
+</body>
+</html>

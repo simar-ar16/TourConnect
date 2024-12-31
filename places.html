@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TourConnect - Local Shops Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .search-container input[type="text"] {
+            width: 50%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-container button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #45a049;
+        }
+
+        .shops-list {
+            margin-top: 2rem;
+        }
+
+        .shop-item {
+            background-color: white;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .shop-item h3 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TourConnect - Find Local Shops</h1>
+    </header>
+    <main>
+        <div class="search-container">
+            <input type="text" id="cityInput" placeholder="Enter a city name">
+            <button onclick="findShops()">Search</button>
+        </div>
+        <div class="shops-list" id="shopsList">
+            <!-- Local shops will appear here -->
+        </div>
+    </main>
+    <script>
+        function findShops() {
+            const city = document.getElementById('cityInput').value.trim();
+            const shopsList = document.getElementById('shopsList');
+            shopsList.innerHTML = '';
+
+            if (city === '') {
+                alert('Please enter a city name.');
+                return;
+            }
+
+            const localShopsData = {
+                'Delhi': [
+                    { name: 'Chandni Chowk', description: 'Famous for spices, jewelry, and street food.' },
+                    { name: 'Sarojini Nagar', description: 'Affordable fashion and accessories.' }
+                ],
+                'Mumbai': [
+                    { name: 'Colaba Causeway', description: 'Popular for antiques and street shopping.' },
+                    { name: 'Dadar Flower Market', description: 'Best place to buy fresh flowers.' }
+                ],
+                'Jaipur': [
+                    { name: 'Johari Bazaar', description: 'Known for jewelry and gemstones.' },
+                    { name: 'Bapu Bazaar', description: 'Famous for textiles and handicrafts.' }
+                ]
+                //add more cities
+            };
+
+            const shops = localShopsData[city];
+
+            if (shops) {
+                shops.forEach(shop => {
+                    const shopItem = document.createElement('div');
+                    shopItem.className = 'shop-item';
+                    shopItem.innerHTML = `
+                        <h3>${shop.name}</h3>
+                        <p>${shop.description}</p>
+                    `;
+                    shopsList.appendChild(shopItem);
+                });
+            } else {
+                shopsList.innerHTML = `<p>No local shops found for "${city}". Please try another city.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
